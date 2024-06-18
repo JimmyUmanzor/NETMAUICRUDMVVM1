@@ -1,0 +1,36 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NETMAUICRUDMVVM1.Views.InventarioMain"
+             xmlns:viewModel="clr-namespace:NETMAUICRUDMVVM1.ViewModels"
+             x:DataType="viewModel:InventarioMainViewModel"
+             xmlns:models="clr-namespace:NETMAUICRUDMVVM1.Models"
+             Title="Inventario de Artículos">
+    <ScrollView>
+        <VerticalStackLayout Padding="10,0,10,0">
+            <Button Text="Agregar Artículo" HorizontalOptions="Start" Command="{Binding goToAddInventarioFormCommand}"/>
+
+            <Grid Margin="5,5,5,5"  RowDefinitions="Auto" ColumnDefinitions="*,*,*">
+                <Label Text="Nombre " FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0"/>
+                <Label Text="Cantidad " FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Precio" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="2"/>
+                <Label Text="Ubicación" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="2"/>
+            </Grid>
+            <CollectionView ItemsSource="{Binding InventarioCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Inventario">
+                        <Grid RowSpacing="0" RowDefinitions="5,Auto,5,1" ColumnDefinitions="*,*,*" VerticalOptions="FillAndExpand">
+                            <Label Text="{Binding Nombre}" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding Cantidad}" Grid.Row="1" Grid.Column="1" />
+                            <Label Text="{Binding Precio}" Grid.Row="1" Grid.Column="2" />
+                            <Label Text="{Binding Ubicacion}" Grid.Row="1" Grid.Column="2" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:InventarioMainViewModel}},Path=SelectInventarioCommand}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NETMAUICRUDMVVM1.Views.AddInventarioForm"
+             xmlns:viewModel="clr-namespace:NETMAUICRUDMVVM1.ViewModels"
+             x:DataType="viewModel:AddInventarioFormViewModel"
+             Title="AddInventarioForm">
+    <VerticalStackLayout Padding="30,0,30,0" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+        <Label Text="Nombre Artículo Para Inventario: "/>
+        <Entry Text="{Binding NombreProperty}" Keyboard="Text" Placeholder="Ingrese el nombre del articulo"/>
+
+        <Label Text="Correo Electrónico: (opcional)"/>
+        <Entry Text="{Binding CantidadProperty}" Keyboard="Numeric" Placeholder="Ingrese la cantidad del artículo"/>
+
+        <Label Text="Dirección : (opcional)" />
+        <Entry Text="{Binding PrecioProperty}" Keyboard="Numeric" Placeholder="Ingrese el precio del artículo"/>
+
+        <Label Text="Dirección : (opcional)" />
+        <Entry Text="{Binding UbicacionProperty}" Keyboard="Text" Placeholder="Ingrese la ubicación del artículo"/>
+      
+        <Button Text="Guardar" Command="{Binding AddUpdateCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
